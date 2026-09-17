@@ -6,377 +6,496 @@
 <title>France Foot World</title>
 
 <style>
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
-html{
-  scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth}
 
 body{
-  margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  background:#f3f6fb;
-  color:#14213d;
+ margin:0;
+ font-family:Arial,Helvetica,sans-serif;
+ background:#f3f6fb;
+ color:#14213d;
 }
 
-/* HEADER */
-
 header{
-  background:linear-gradient(135deg,#061a40,#0b3d91,#2563eb);
-  color:white;
+ background:linear-gradient(135deg,#061a40,#0b3d91,#2563eb);
+ color:white;
 }
 
 .header-content{
-  max-width:1150px;
-  margin:auto;
-  padding:38px 20px 30px;
-  text-align:center;
+ max-width:1150px;
+ margin:auto;
+ padding:38px 20px 30px;
+ text-align:center;
 }
 
 header h1{
-  margin:0;
-  font-size:34px;
-  letter-spacing:.5px;
+ margin:0;
+ font-size:34px;
+ letter-spacing:.5px;
 }
 
 header p{
-  margin:10px 0 0;
-  color:#dbeafe;
-  font-size:16px;
+ margin:10px 0 0;
+ color:#dbeafe;
+ font-size:16px;
 }
 
-/* MENU */
+.season{
+ display:inline-block;
+ margin-top:12px;
+ padding:6px 12px;
+ background:rgba(255,255,255,.12);
+ border-radius:20px;
+ font-size:13px;
+}
 
 nav{
-  background:#06152f;
-  border-top:1px solid rgba(255,255,255,.1);
+ background:#06152f;
+ border-top:1px solid rgba(255,255,255,.1);
 }
 
 .nav-content{
-  max-width:1150px;
-  margin:auto;
-  display:flex;
-  justify-content:center;
-  gap:6px;
-  padding:8px 15px;
+ max-width:1150px;
+ margin:auto;
+ display:flex;
+ justify-content:center;
+ gap:6px;
+ padding:8px 15px;
 }
 
 .nav-btn{
-  background:transparent;
-  color:#dbeafe;
-  border:0;
-  padding:12px 18px;
-  border-radius:8px;
-  cursor:pointer;
-  font-size:14px;
-  font-weight:bold;
+ background:transparent;
+ color:#dbeafe;
+ border:0;
+ padding:12px 18px;
+ border-radius:8px;
+ cursor:pointer;
+ font-size:14px;
+ font-weight:bold;
 }
 
 .nav-btn:hover,
 .nav-btn.active{
-  background:#2563eb;
-  color:white;
+ background:#2563eb;
+ color:white;
 }
-
-/* MAIN */
 
 main{
-  max-width:1150px;
-  margin:auto;
-  padding:22px 20px 40px;
+ max-width:1150px;
+ margin:auto;
+ padding:22px 20px 45px;
 }
 
-/* STATS */
-
 .stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:14px;
-  margin-bottom:25px;
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:14px;
+ margin-bottom:25px;
 }
 
 .stat{
-  background:white;
-  padding:20px;
-  border-radius:14px;
-  text-align:center;
-  box-shadow:0 4px 15px rgba(15,23,42,.07);
-  border:1px solid #e5eaf2;
+ background:white;
+ padding:20px;
+ border-radius:14px;
+ text-align:center;
+ box-shadow:0 4px 15px rgba(15,23,42,.07);
+ border:1px solid #e5eaf2;
 }
 
 .stat strong{
-  display:block;
-  font-size:30px;
-  color:#1d4ed8;
-  margin-bottom:4px;
+ display:block;
+ font-size:30px;
+ color:#1d4ed8;
+ margin-bottom:4px;
 }
 
 .stat span{
-  color:#64748b;
-  font-size:14px;
+ color:#64748b;
+ font-size:14px;
 }
-
-/* SEARCH */
 
 .controls{
-  background:white;
-  padding:15px;
-  border-radius:14px;
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-bottom:30px;
-  box-shadow:0 3px 12px rgba(15,23,42,.05);
-  border:1px solid #e5eaf2;
+ background:white;
+ padding:15px;
+ border-radius:14px;
+ display:grid;
+ grid-template-columns:2fr 1fr 1fr;
+ gap:10px;
+ margin-bottom:30px;
+ box-shadow:0 3px 12px rgba(15,23,42,.05);
+ border:1px solid #e5eaf2;
 }
 
-input,
-select{
-  flex:1;
-  min-width:210px;
-  padding:14px;
-  border:1px solid #cbd5e1;
-  border-radius:9px;
-  font-size:15px;
-  background:white;
-  outline:none;
+input,select{
+ width:100%;
+ padding:14px;
+ border:1px solid #cbd5e1;
+ border-radius:9px;
+ font-size:15px;
+ background:white;
+ outline:none;
 }
 
-input:focus,
-select:focus{
-  border-color:#2563eb;
+input:focus,select:focus{
+ border-color:#2563eb;
 }
-
-/* TITRES */
 
 .section-title{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  margin:30px 0 15px;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:10px;
+ margin:30px 0 15px;
 }
 
 .section-title h2{
-  margin:0;
-  font-size:22px;
+ margin:0;
+ font-size:22px;
+}
+
+.subtitle{
+ color:#64748b;
+ margin-top:-5px;
+ margin-bottom:20px;
+ font-size:14px;
 }
 
 .country-title{
-  margin:28px 0 12px;
-  font-size:20px;
-  color:#0f2d5c;
-  display:flex;
-  align-items:center;
-  gap:8px;
+ margin:30px 0 12px;
+ font-size:20px;
+ color:#0f2d5c;
 }
 
-/* CHAMPIONNATS */
-
 .leagues{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
-  gap:14px;
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+ gap:14px;
 }
 
 .league{
-  background:white;
-  border:1px solid #dce5f2;
-  border-radius:14px;
-  padding:18px;
-  cursor:pointer;
-  text-align:left;
-  color:#172554;
-  transition:.2s;
-  box-shadow:0 3px 10px rgba(15,23,42,.04);
+ background:white;
+ border:1px solid #dce5f2;
+ border-radius:14px;
+ padding:18px;
+ cursor:pointer;
+ text-align:left;
+ color:#172554;
+ transition:.2s;
+ box-shadow:0 3px 10px rgba(15,23,42,.04);
 }
 
 .league:hover{
-  transform:translateY(-3px);
-  border-color:#2563eb;
-  box-shadow:0 7px 18px rgba(37,99,235,.12);
+ transform:translateY(-3px);
+ border-color:#2563eb;
+ box-shadow:0 7px 18px rgba(37,99,235,.12);
 }
 
 .league-top{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin-bottom:12px;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ margin-bottom:12px;
 }
 
-.flag{
-  font-size:28px;
-}
+.flag{font-size:28px}
 
 .count{
-  background:#eff6ff;
-  color:#1d4ed8;
-  padding:5px 9px;
-  border-radius:20px;
-  font-size:12px;
-  font-weight:bold;
+ background:#eff6ff;
+ color:#1d4ed8;
+ padding:5px 9px;
+ border-radius:20px;
+ font-size:12px;
+ font-weight:bold;
 }
 
 .league strong{
-  display:block;
-  font-size:17px;
-  margin-bottom:6px;
+ display:block;
+ font-size:17px;
+ margin-bottom:6px;
 }
 
-.league small{
-  color:#64748b;
+.league small{color:#64748b}
+
+/* CLASSEMENT */
+
+.ranking{
+ background:white;
+ border-radius:14px;
+ overflow:hidden;
+ border:1px solid #e2e8f0;
+ box-shadow:0 3px 12px rgba(15,23,42,.05);
 }
 
-/* JOUEURS */
+.rank-row{
+ display:grid;
+ grid-template-columns:55px 1fr 160px 100px;
+ align-items:center;
+ gap:10px;
+ padding:14px 16px;
+ border-bottom:1px solid #eef2f7;
+}
 
-.players-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:12px;
+.rank-row:last-child{border-bottom:0}
+
+.rank-position{
+ font-size:18px;
+ font-weight:bold;
+ color:#1d4ed8;
+}
+
+.rank-league{
+ font-weight:bold;
+ color:#0f2d5c;
+}
+
+.rank-country{
+ color:#64748b;
+ font-size:14px;
+}
+
+.rank-count{
+ text-align:right;
+ font-weight:bold;
+ color:#1d4ed8;
+}
+
+/* CLUBS */
+
+.club-section{
+ background:white;
+ border:1px solid #e2e8f0;
+ border-radius:14px;
+ margin-bottom:16px;
+ overflow:hidden;
+ box-shadow:0 3px 10px rgba(15,23,42,.05);
+}
+
+.club-header{
+ background:#f8fafc;
+ padding:15px 18px;
+ border-bottom:1px solid #e2e8f0;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:10px;
+}
+
+.club-header strong{
+ color:#0f2d5c;
+ font-size:17px;
+}
+
+.club-number{
+ background:#dbeafe;
+ color:#1d4ed8;
+ padding:5px 9px;
+ border-radius:20px;
+ font-size:12px;
+ font-weight:bold;
+}
+
+.club-players{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+ gap:10px;
+ padding:12px;
 }
 
 .player{
-  background:white;
-  padding:17px;
-  border-radius:12px;
-  border:1px solid #e2e8f0;
-  border-left:4px solid #2563eb;
-  box-shadow:0 3px 10px rgba(15,23,42,.05);
+ background:white;
+ padding:15px;
+ border-radius:10px;
+ border:1px solid #e2e8f0;
+ border-left:4px solid #2563eb;
 }
 
 .player-name{
-  font-size:17px;
-  font-weight:bold;
-  color:#0f2d5c;
-  margin-bottom:10px;
+ font-size:17px;
+ font-weight:bold;
+ color:#0f2d5c;
+ margin-bottom:8px;
 }
 
 .player-club{
-  color:#334155;
-  font-size:14px;
-  margin-bottom:7px;
+ color:#334155;
+ font-size:14px;
+ margin-bottom:8px;
 }
 
 .player-meta{
-  display:flex;
-  flex-wrap:wrap;
-  gap:6px;
+ display:flex;
+ flex-wrap:wrap;
+ gap:6px;
 }
 
 .badge{
-  display:inline-block;
-  padding:5px 8px;
-  border-radius:6px;
-  font-size:12px;
-  background:#f1f5f9;
-  color:#475569;
+ display:inline-block;
+ padding:5px 8px;
+ border-radius:6px;
+ font-size:12px;
+ background:#f1f5f9;
+ color:#475569;
 }
 
 .badge-country{
-  background:#eff6ff;
-  color:#1d4ed8;
+ background:#eff6ff;
+ color:#1d4ed8;
+}
+
+/* STATISTIQUES */
+
+.stats-dashboard{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:16px;
+}
+
+.big-card{
+ background:white;
+ border-radius:14px;
+ padding:20px;
+ border:1px solid #e2e8f0;
+ box-shadow:0 3px 12px rgba(15,23,42,.05);
+}
+
+.big-card h3{
+ margin:0 0 18px;
+ color:#0f2d5c;
+ font-size:18px;
+}
+
+.highlight{
+ text-align:center;
+ padding:15px 5px;
+}
+
+.highlight-icon{
+ font-size:38px;
+ margin-bottom:8px;
+}
+
+.highlight strong{
+ display:block;
+ font-size:22px;
+ color:#1d4ed8;
+}
+
+.highlight span{
+ display:block;
+ margin-top:6px;
+ color:#64748b;
+}
+
+.bar-row{
+ margin-bottom:14px;
+}
+
+.bar-label{
+ display:flex;
+ justify-content:space-between;
+ gap:10px;
+ font-size:14px;
+ margin-bottom:6px;
+}
+
+.bar-bg{
+ height:9px;
+ background:#e2e8f0;
+ border-radius:20px;
+ overflow:hidden;
+}
+
+.bar{
+ height:100%;
+ background:#2563eb;
+ border-radius:20px;
 }
 
 /* BOUTONS */
 
 .back{
-  background:#1748a2;
-  color:white;
-  border:0;
-  padding:11px 17px;
-  border-radius:9px;
-  cursor:pointer;
-  font-weight:bold;
-  margin-bottom:15px;
+ background:#1748a2;
+ color:white;
+ border:0;
+ padding:11px 17px;
+ border-radius:9px;
+ cursor:pointer;
+ font-weight:bold;
+ margin-bottom:15px;
 }
 
-.back:hover{
-  background:#123a82;
-}
-
-/* MESSAGES */
+.back:hover{background:#123a82}
 
 .empty{
-  text-align:center;
-  padding:30px;
-  color:#64748b;
+ text-align:center;
+ padding:30px;
+ color:#64748b;
 }
-
-/* FOOTER */
 
 footer{
-  background:#06152f;
-  color:#94a3b8;
-  text-align:center;
-  padding:25px 15px;
-  font-size:13px;
+ background:#06152f;
+ color:#94a3b8;
+ text-align:center;
+ padding:25px 15px;
+ font-size:13px;
 }
 
-footer strong{
-  color:white;
-}
+footer strong{color:white}
 
-/* MOBILE */
+@media(max-width:700px){
 
-@media(max-width:650px){
+ header h1{font-size:25px}
 
-  .header-content{
-    padding:28px 15px 24px;
-  }
+ .header-content{
+  padding:28px 15px 24px;
+ }
 
-  header h1{
-    font-size:25px;
-  }
+ .nav-content{
+  overflow-x:auto;
+  justify-content:flex-start;
+ }
 
-  header p{
-    font-size:14px;
-  }
+ .nav-btn{
+  white-space:nowrap;
+ }
 
-  .nav-content{
-    overflow-x:auto;
-    justify-content:flex-start;
-  }
+ main{padding:15px}
 
-  .nav-btn{
-    white-space:nowrap;
-  }
+ .stats{gap:7px}
 
-  main{
-    padding:15px;
-  }
+ .stat{
+  padding:14px 5px;
+ }
 
-  .stats{
-    gap:7px;
-  }
+ .stat strong{font-size:23px}
 
-  .stat{
-    padding:14px 5px;
-  }
+ .stat span{font-size:11px}
 
-  .stat strong{
-    font-size:23px;
-  }
+ .controls{
+  grid-template-columns:1fr;
+  padding:10px;
+ }
 
-  .stat span{
-    font-size:11px;
-  }
+ .leagues{
+  grid-template-columns:1fr;
+ }
 
-  .controls{
-    padding:10px;
-  }
+ .stats-dashboard{
+  grid-template-columns:1fr;
+ }
 
-  input,
-  select{
-    width:100%;
-    min-width:100%;
-  }
+ .rank-row{
+  grid-template-columns:40px 1fr 75px;
+ }
 
-  .leagues,
-  .players-grid{
-    grid-template-columns:1fr;
-  }
+ .rank-country{
+  display:none;
+ }
+
+ .club-players{
+  grid-template-columns:1fr;
+ }
 }
 </style>
 </head>
@@ -386,16 +505,19 @@ footer strong{
 <header>
 
 <div class="header-content">
-  <h1>🇫🇷 FRANCE FOOT WORLD 🌍</h1>
-  <p>Les joueurs français évoluant à l'étranger</p>
+ <h1>🇫🇷 FRANCE FOOT WORLD 🌍</h1>
+ <p>Les Français aux quatre coins du monde</p>
+ <span class="season">⚽ Saison 2026-2027</span>
 </div>
 
 <nav>
-  <div class="nav-content">
-    <button class="nav-btn active" id="navHome">🏠 Accueil</button>
-    <button class="nav-btn" id="navLeagues">🌍 Championnats</button>
-    <button class="nav-btn" id="navPlayers">🇫🇷 Tous les joueurs</button>
-  </div>
+ <div class="nav-content">
+  <button class="nav-btn active" id="navHome">🏠 Accueil</button>
+  <button class="nav-btn" id="navLeagues">🌍 Championnats</button>
+  <button class="nav-btn" id="navRanking">🏆 Classement</button>
+  <button class="nav-btn" id="navPlayers">🇫🇷 Joueurs</button>
+  <button class="nav-btn" id="navStats">📊 Statistiques</button>
+ </div>
 </nav>
 
 </header>
@@ -404,46 +526,58 @@ footer strong{
 
 <div class="stats">
 
-  <div class="stat">
-    <strong id="totalPlayers">0</strong>
-    <span>Joueurs français</span>
-  </div>
+ <div class="stat">
+  <strong id="totalPlayers">0</strong>
+  <span>Joueurs français</span>
+ </div>
 
-  <div class="stat">
-    <strong id="totalLeagues">0</strong>
-    <span>Championnats</span>
-  </div>
+ <div class="stat">
+  <strong id="totalLeagues">0</strong>
+  <span>Championnats</span>
+ </div>
 
-  <div class="stat">
-    <strong id="totalCountries">0</strong>
-    <span>Pays</span>
-  </div>
+ <div class="stat">
+  <strong id="totalCountries">0</strong>
+  <span>Pays</span>
+ </div>
 
 </div>
 
 <div class="controls">
 
-  <input
-    id="search"
-    type="search"
-    placeholder="🔎 Rechercher un joueur ou un club..."
-  >
+ <input
+  id="search"
+  type="search"
+  placeholder="🔎 Rechercher un joueur, club ou championnat..."
+ >
 
-  <select id="country">
-    <option value="">🌍 Tous les pays</option>
-  </select>
+ <select id="country">
+  <option value="">🌍 Tous les pays</option>
+ </select>
+
+ <select id="position">
+  <option value="">⚽ Tous les postes</option>
+  <option value="Gardien">🧤 Gardien</option>
+  <option value="Défenseur">🛡️ Défenseur</option>
+  <option value="Milieu">🎯 Milieu</option>
+  <option value="Attaquant">⚽ Attaquant</option>
+ </select>
 
 </div>
 
-<!-- ACCUEIL / CHAMPIONNATS -->
+<!-- CHAMPIONNATS -->
 
 <section id="home">
 
-  <div class="section-title">
-    <h2>🌍 Les championnats</h2>
-  </div>
+ <div class="section-title">
+  <h2>🌍 Les championnats</h2>
+ </div>
 
-  <div id="countries"></div>
+ <p class="subtitle">
+  Retrouvez les joueurs français championnat par championnat.
+ </p>
+
+ <div id="countries"></div>
 
 </section>
 
@@ -451,15 +585,33 @@ footer strong{
 
 <section id="details" hidden>
 
-  <button class="back" id="back">
-    ← Tous les championnats
-  </button>
+ <button class="back" id="back">
+  ← Tous les championnats
+ </button>
 
-  <div class="section-title">
-    <h2 id="leagueTitle"></h2>
-  </div>
+ <div class="section-title">
+  <h2 id="leagueTitle"></h2>
+ </div>
 
-  <div id="players" class="players-grid"></div>
+ <p class="subtitle" id="leagueCount"></p>
+
+ <div id="clubGroups"></div>
+
+</section>
+
+<!-- CLASSEMENT -->
+
+<section id="rankingSection" hidden>
+
+ <div class="section-title">
+  <h2>🏆 Championnats avec le plus de Français</h2>
+ </div>
+
+ <p class="subtitle">
+  Classement calculé automatiquement à partir de la base France Foot World.
+ </p>
+
+ <div id="ranking" class="ranking"></div>
 
 </section>
 
@@ -467,23 +619,63 @@ footer strong{
 
 <section id="allPlayers" hidden>
 
-  <div class="section-title">
-    <h2>🇫🇷 Tous les joueurs</h2>
+ <div class="section-title">
+  <h2>🇫🇷 Tous les joueurs</h2>
+ </div>
+
+ <p class="subtitle" id="playersResult"></p>
+
+ <div id="allPlayersList" class="club-players"></div>
+
+</section>
+
+<!-- STATISTIQUES -->
+
+<section id="statisticsSection" hidden>
+
+ <div class="section-title">
+  <h2>📊 Statistiques France Foot World</h2>
+ </div>
+
+ <p class="subtitle">
+  Les principaux chiffres de la base de données.
+ </p>
+
+ <div class="stats-dashboard">
+
+  <div class="big-card">
+   <h3>🌍 Pays le plus représenté</h3>
+   <div id="topCountry" class="highlight"></div>
   </div>
 
-  <div id="allPlayersList" class="players-grid"></div>
+  <div class="big-card">
+   <h3>🏆 Championnat n°1</h3>
+   <div id="topLeague" class="highlight"></div>
+  </div>
+
+  <div class="big-card">
+   <h3>⚽ Répartition par poste</h3>
+   <div id="positionStats"></div>
+  </div>
+
+  <div class="big-card">
+   <h3>🌎 Français par pays</h3>
+   <div id="countryStats"></div>
+  </div>
+
+ </div>
 
 </section>
 
 <p id="status" class="empty">
-  Chargement des joueurs...
+ Chargement des joueurs...
 </p>
 
 </main>
 
 <footer>
-  <strong>France Foot World</strong><br>
-  Les Français du football mondial
+ <strong>France Foot World</strong><br>
+ Les Français du football mondial
 </footer>
 
 <script>
@@ -498,393 +690,702 @@ let currentView="home";
 const $=id=>document.getElementById(id);
 
 const flags={
-  "Angleterre":"🏴",
-  "Espagne":"🇪🇸",
-  "Allemagne":"🇩🇪",
-  "Italie":"🇮🇹",
-  "Portugal":"🇵🇹",
-  "Belgique":"🇧🇪",
-  "Pays-Bas":"🇳🇱",
-  "Arabie saoudite":"🇸🇦",
-  "Arabie Saoudite":"🇸🇦",
-  "États-Unis":"🇺🇸",
-  "Etats-Unis":"🇺🇸",
-  "Turquie":"🇹🇷",
-  "Écosse":"🏴",
-  "Ecosse":"🏴",
-  "Suisse":"🇨🇭",
-  "Autriche":"🇦🇹",
-  "Grèce":"🇬🇷",
-  "Danemark":"🇩🇰",
-  "Norvège":"🇳🇴",
-  "Suède":"🇸🇪",
-  "Pologne":"🇵🇱",
-  "Croatie":"🇭🇷",
-  "Serbie":"🇷🇸",
-  "Roumanie":"🇷🇴",
-  "République tchèque":"🇨🇿",
-  "Brésil":"🇧🇷",
-  "Argentine":"🇦🇷",
-  "Mexique":"🇲🇽",
-  "Canada":"🇨🇦",
-  "Japon":"🇯🇵",
-  "Corée du Sud":"🇰🇷",
-  "Australie":"🇦🇺",
-  "Qatar":"🇶🇦",
-  "Émirats arabes unis":"🇦🇪"
+ "Angleterre":"🏴",
+ "Espagne":"🇪🇸",
+ "Allemagne":"🇩🇪",
+ "Italie":"🇮🇹",
+ "Portugal":"🇵🇹",
+ "Belgique":"🇧🇪",
+ "Pays-Bas":"🇳🇱",
+ "Arabie saoudite":"🇸🇦",
+ "Arabie Saoudite":"🇸🇦",
+ "États-Unis":"🇺🇸",
+ "Etats-Unis":"🇺🇸",
+ "Turquie":"🇹🇷",
+ "Écosse":"🏴",
+ "Ecosse":"🏴",
+ "Suisse":"🇨🇭",
+ "Autriche":"🇦🇹",
+ "Grèce":"🇬🇷",
+ "Danemark":"🇩🇰",
+ "Norvège":"🇳🇴",
+ "Suède":"🇸🇪",
+ "Pologne":"🇵🇱",
+ "Croatie":"🇭🇷",
+ "Serbie":"🇷🇸",
+ "Roumanie":"🇷🇴",
+ "République tchèque":"🇨🇿",
+ "Brésil":"🇧🇷",
+ "Argentine":"🇦🇷",
+ "Mexique":"🇲🇽",
+ "Canada":"🇨🇦",
+ "Japon":"🇯🇵",
+ "Corée du Sud":"🇰🇷",
+ "Australie":"🇦🇺",
+ "Qatar":"🇶🇦",
+ "Émirats arabes unis":"🇦🇪"
 };
 
-function clean(value){
-  return String(value ?? "").trim();
+function clean(v){
+ return String(v??"").trim();
 }
 
 function getFlag(country){
-  return flags[country] || "🌍";
+ return flags[country]||"🌍";
+}
+
+/* NORMALISATION DES POSTES */
+
+function positionGroup(position){
+
+ const p=clean(position).toLocaleLowerCase("fr");
+
+ if(p.includes("gardien")){
+  return "Gardien";
+ }
+
+ if(
+  p.includes("défenseur") ||
+  p.includes("defenseur") ||
+  p.includes("latéral") ||
+  p.includes("lateral") ||
+  p.includes("arrière") ||
+  p.includes("arriere")
+ ){
+  return "Défenseur";
+ }
+
+ if(
+  p.includes("milieu") ||
+  p.includes("relayeur")
+ ){
+  return "Milieu";
+ }
+
+ if(
+  p.includes("attaquant") ||
+  p.includes("ailier") ||
+  p.includes("avant-centre") ||
+  p.includes("buteur")
+ ){
+  return "Attaquant";
+ }
+
+ return position || "Non renseigné";
 }
 
 function filteredPlayers(){
 
-  const q=$("search")
-    .value
-    .trim()
-    .toLocaleLowerCase("fr");
+ const q=$("search")
+  .value
+  .trim()
+  .toLocaleLowerCase("fr");
 
-  const country=$("country").value;
+ const country=$("country").value;
+ const position=$("position").value;
 
-  return joueurs.filter(j=>{
+ return joueurs.filter(j=>{
 
-    const matchCountry=
-      !country || j.pays===country;
+  const matchCountry=
+   !country || j.pays===country;
 
-    const text=
-      `${j.joueur} ${j.club} ${j.championnat} ${j.pays} ${j.poste}`
-      .toLocaleLowerCase("fr");
+  const matchPosition=
+   !position ||
+   positionGroup(j.poste)===position;
 
-    const matchSearch=
-      !q || text.includes(q);
+  const text=
+   `${j.joueur} ${j.club} ${j.championnat} ${j.pays} ${j.poste}`
+   .toLocaleLowerCase("fr");
 
-    return matchCountry && matchSearch;
+  const matchSearch=
+   !q || text.includes(q);
 
-  });
+  return matchCountry &&
+         matchPosition &&
+         matchSearch;
+
+ });
 
 }
 
 function createPlayerCard(j){
 
-  const card=document.createElement("article");
-  card.className="player";
+ const card=document.createElement("article");
+ card.className="player";
 
-  const name=document.createElement("div");
-  name.className="player-name";
-  name.textContent=j.joueur;
+ const name=document.createElement("div");
+ name.className="player-name";
+ name.textContent=j.joueur;
 
-  const club=document.createElement("div");
-  club.className="player-club";
-  club.textContent="⚽ "+(j.club || "Club non renseigné");
+ const club=document.createElement("div");
+ club.className="player-club";
+ club.textContent="🏟️ "+(j.club||"Club non renseigné");
 
-  const meta=document.createElement("div");
-  meta.className="player-meta";
+ const meta=document.createElement("div");
+ meta.className="player-meta";
 
-  if(j.poste){
+ if(j.poste){
 
-    const poste=document.createElement("span");
-    poste.className="badge";
-    poste.textContent=j.poste;
+  const poste=document.createElement("span");
+  poste.className="badge";
+  poste.textContent="⚽ "+j.poste;
 
-    meta.append(poste);
+  meta.append(poste);
+ }
 
-  }
+ const league=document.createElement("span");
+ league.className="badge";
+ league.textContent=j.championnat;
 
-  const league=document.createElement("span");
-  league.className="badge";
-  league.textContent=j.championnat;
+ const country=document.createElement("span");
+ country.className="badge badge-country";
+ country.textContent=getFlag(j.pays)+" "+j.pays;
 
-  const country=document.createElement("span");
-  country.className="badge badge-country";
-  country.textContent=
-    getFlag(j.pays)+" "+j.pays;
+ meta.append(league,country);
 
-  meta.append(league,country);
+ card.append(name,club,meta);
 
-  card.append(name,club,meta);
-
-  return card;
-
+ return card;
 }
 
 function updateStats(){
 
-  $("totalPlayers").textContent=
-    joueurs.length;
+ $("totalPlayers").textContent=joueurs.length;
 
-  $("totalLeagues").textContent=
-    new Set(
-      joueurs.map(j=>j.pays+"|"+j.championnat)
-    ).size;
+ $("totalLeagues").textContent=
+  new Set(
+   joueurs.map(j=>j.pays+"|"+j.championnat)
+  ).size;
 
-  $("totalCountries").textContent=
-    new Set(
-      joueurs.map(j=>j.pays)
-    ).size;
+ $("totalCountries").textContent=
+  new Set(joueurs.map(j=>j.pays)).size;
 
 }
 
-function updateNavigation(){
+function setView(view){
 
-  document
-    .querySelectorAll(".nav-btn")
-    .forEach(btn=>btn.classList.remove("active"));
+ currentView=view;
+ selectedLeague=null;
 
-  if(currentView==="players"){
-    $("navPlayers").classList.add("active");
-  }else{
-    $("navHome").classList.add("active");
-  }
+ $("home").hidden=true;
+ $("details").hidden=true;
+ $("rankingSection").hidden=true;
+ $("allPlayers").hidden=true;
+ $("statisticsSection").hidden=true;
 
-}
+ document
+  .querySelectorAll(".nav-btn")
+  .forEach(btn=>btn.classList.remove("active"));
 
-function render(){
-
-  updateStats();
-  updateNavigation();
-
-  const filtered=filteredPlayers();
-
-  $("home").hidden=true;
-  $("details").hidden=true;
-  $("allPlayers").hidden=true;
-
-  if(currentView==="players"){
-
-    $("allPlayers").hidden=false;
-    renderAllPlayers(filtered);
-    return;
-
-  }
-
-  if(selectedLeague){
-
-    $("details").hidden=false;
-    renderLeague(filtered);
-    return;
-
-  }
+ if(view==="home"){
 
   $("home").hidden=false;
-  renderLeagues(filtered);
+  $("navHome").classList.add("active");
 
+ }else if(view==="ranking"){
+
+  $("rankingSection").hidden=false;
+  $("navRanking").classList.add("active");
+
+ }else if(view==="players"){
+
+  $("allPlayers").hidden=false;
+  $("navPlayers").classList.add("active");
+
+ }else if(view==="stats"){
+
+  $("statisticsSection").hidden=false;
+  $("navStats").classList.add("active");
+
+ }
+
+ render();
 }
+
+/* CHAMPIONNATS */
 
 function renderLeagues(filtered){
 
-  $("countries").replaceChildren();
+ $("countries").replaceChildren();
 
-  const countries=new Map();
+ const countries=new Map();
 
-  filtered.forEach(j=>{
+ filtered.forEach(j=>{
 
-    if(!countries.has(j.pays)){
-      countries.set(j.pays,new Map());
-    }
-
-    const leagues=countries.get(j.pays);
-
-    if(!leagues.has(j.championnat)){
-      leagues.set(j.championnat,0);
-    }
-
-    leagues.set(
-      j.championnat,
-      leagues.get(j.championnat)+1
-    );
-
-  });
-
-  const sortedCountries=
-    [...countries.keys()]
-    .sort((a,b)=>a.localeCompare(b,"fr"));
-
-  if(!sortedCountries.length){
-
-    const empty=document.createElement("p");
-    empty.className="empty";
-    empty.textContent=
-      "Aucun championnat trouvé.";
-
-    $("countries").append(empty);
-    return;
-
+  if(!countries.has(j.pays)){
+   countries.set(j.pays,new Map());
   }
 
-  sortedCountries.forEach(country=>{
+  const leagues=countries.get(j.pays);
 
-    const title=document.createElement("h3");
-    title.className="country-title";
-    title.textContent=
-      `${getFlag(country)} ${country}`;
+  if(!leagues.has(j.championnat)){
+   leagues.set(j.championnat,0);
+  }
 
-    const grid=document.createElement("div");
-    grid.className="leagues";
+  leagues.set(
+   j.championnat,
+   leagues.get(j.championnat)+1
+  );
 
-    const leagues=
-      [...countries.get(country).entries()]
-      .sort((a,b)=>a[0].localeCompare(b[0],"fr"));
+ });
 
-    leagues.forEach(([league,count])=>{
+ const sortedCountries=
+  [...countries.keys()]
+  .sort((a,b)=>a.localeCompare(b,"fr"));
 
-      const btn=document.createElement("button");
-      btn.className="league";
+ if(!sortedCountries.length){
 
-      const top=document.createElement("div");
-      top.className="league-top";
+  $("countries").innerHTML=
+   '<p class="empty">Aucun championnat trouvé.</p>';
 
-      const flag=document.createElement("span");
-      flag.className="flag";
-      flag.textContent=getFlag(country);
+  return;
+ }
 
-      const counter=document.createElement("span");
-      counter.className="count";
-      counter.textContent=
-        `${count} joueur${count>1?"s":""}`;
+ sortedCountries.forEach(country=>{
 
-      top.append(flag,counter);
+  const title=document.createElement("h3");
+  title.className="country-title";
+  title.textContent=
+   `${getFlag(country)} ${country}`;
 
-      const name=document.createElement("strong");
-      name.textContent=league;
+  const grid=document.createElement("div");
+  grid.className="leagues";
 
-      const info=document.createElement("small");
-      info.textContent=country;
+  const leagues=
+   [...countries.get(country).entries()]
+   .sort((a,b)=>b[1]-a[1]);
 
-      btn.append(top,name,info);
+  leagues.forEach(([league,count])=>{
 
-      btn.onclick=()=>{
+   const btn=document.createElement("button");
+   btn.className="league";
 
-        selectedLeague={
-          championnat:league,
-          pays:country
-        };
+   const top=document.createElement("div");
+   top.className="league-top";
 
-        currentView="home";
+   const flag=document.createElement("span");
+   flag.className="flag";
+   flag.textContent=getFlag(country);
 
-        render();
+   const counter=document.createElement("span");
+   counter.className="count";
+   counter.textContent=
+    `${count} joueur${count>1?"s":""}`;
 
-        window.scrollTo({
-          top:0,
-          behavior:"smooth"
-        });
+   top.append(flag,counter);
 
-      };
+   const name=document.createElement("strong");
+   name.textContent=league;
 
-      grid.append(btn);
+   const info=document.createElement("small");
+   info.textContent=country;
 
+   btn.append(top,name,info);
+
+   btn.onclick=()=>{
+
+    selectedLeague={
+     championnat:league,
+     pays:country
+    };
+
+    $("home").hidden=true;
+    $("details").hidden=false;
+
+    renderLeague(filteredPlayers());
+
+    window.scrollTo({
+     top:0,
+     behavior:"smooth"
     });
 
-    $("countries").append(title,grid);
+   };
+
+   grid.append(btn);
 
   });
 
+  $("countries").append(title,grid);
+
+ });
+
 }
+
+/* REGROUPEMENT PAR CLUB */
 
 function renderLeague(filtered){
 
-  const league=selectedLeague;
+ const league=selectedLeague;
 
-  $("leagueTitle").textContent=
-    `${getFlag(league.pays)} ${league.championnat} — ${league.pays}`;
+ $("leagueTitle").textContent=
+  `${getFlag(league.pays)} ${league.championnat}`;
 
-  $("players").replaceChildren();
+ const list=filtered.filter(j=>
+  j.championnat===league.championnat &&
+  j.pays===league.pays
+ );
 
-  const list=filtered
-    .filter(j=>
-      j.championnat===league.championnat &&
-      j.pays===league.pays
-    )
-    .sort((a,b)=>
-      a.joueur.localeCompare(b.joueur,"fr")
-    );
+ $("leagueCount").textContent=
+  `${list.length} joueur${list.length>1?"s":""} français`;
 
-  if(!list.length){
+ $("clubGroups").replaceChildren();
 
-    const empty=document.createElement("p");
-    empty.className="empty";
-    empty.textContent="Aucun joueur trouvé.";
+ if(!list.length){
 
-    $("players").append(empty);
-    return;
+  $("clubGroups").innerHTML=
+   '<p class="empty">Aucun joueur trouvé.</p>';
 
+  return;
+ }
+
+ const clubs=new Map();
+
+ list.forEach(j=>{
+
+  const club=j.club||"Club non renseigné";
+
+  if(!clubs.has(club)){
+   clubs.set(club,[]);
   }
 
-  list.forEach(j=>{
-    $("players").append(
-      createPlayerCard(j)
-    );
-  });
+  clubs.get(club).push(j);
+
+ });
+
+ const sortedClubs=
+  [...clubs.entries()]
+  .sort((a,b)=>
+   a[0].localeCompare(b[0],"fr")
+  );
+
+ sortedClubs.forEach(([club,players])=>{
+
+  const section=document.createElement("section");
+  section.className="club-section";
+
+  const header=document.createElement("div");
+  header.className="club-header";
+
+  const name=document.createElement("strong");
+  name.textContent="🏟️ "+club;
+
+  const count=document.createElement("span");
+  count.className="club-number";
+  count.textContent=
+   `${players.length} Français`;
+
+  header.append(name,count);
+
+  const grid=document.createElement("div");
+  grid.className="club-players";
+
+  players
+   .sort((a,b)=>
+    a.joueur.localeCompare(b.joueur,"fr")
+   )
+   .forEach(j=>{
+    grid.append(createPlayerCard(j));
+   });
+
+  section.append(header,grid);
+
+  $("clubGroups").append(section);
+
+ });
 
 }
 
-function renderAllPlayers(filtered){
+/* CLASSEMENT */
 
-  $("allPlayersList").replaceChildren();
+function renderRanking(filtered){
 
-  const list=[...filtered]
-    .sort((a,b)=>
-      a.joueur.localeCompare(b.joueur,"fr")
-    );
+ $("ranking").replaceChildren();
 
-  if(!list.length){
+ const map=new Map();
 
-    const empty=document.createElement("p");
-    empty.className="empty";
-    empty.textContent="Aucun joueur trouvé.";
+ filtered.forEach(j=>{
 
-    $("allPlayersList").append(empty);
-    return;
+  const key=j.pays+"|"+j.championnat;
 
+  if(!map.has(key)){
+   map.set(key,{
+    pays:j.pays,
+    championnat:j.championnat,
+    count:0
+   });
   }
 
-  list.forEach(j=>{
+  map.get(key).count++;
 
-    $("allPlayersList").append(
-      createPlayerCard(j)
-    );
+ });
 
-  });
+ const ranking=
+  [...map.values()]
+  .sort((a,b)=>
+   b.count-a.count ||
+   a.championnat.localeCompare(
+    b.championnat,"fr"
+   )
+  );
+
+ if(!ranking.length){
+
+  $("ranking").innerHTML=
+   '<p class="empty">Aucune donnée disponible.</p>';
+
+  return;
+ }
+
+ ranking.forEach((item,index)=>{
+
+  const row=document.createElement("div");
+  row.className="rank-row";
+
+  const position=document.createElement("div");
+  position.className="rank-position";
+
+  if(index===0) position.textContent="🥇";
+  else if(index===1) position.textContent="🥈";
+  else if(index===2) position.textContent="🥉";
+  else position.textContent=index+1;
+
+  const league=document.createElement("div");
+  league.className="rank-league";
+  league.textContent=item.championnat;
+
+  const country=document.createElement("div");
+  country.className="rank-country";
+  country.textContent=
+   `${getFlag(item.pays)} ${item.pays}`;
+
+  const count=document.createElement("div");
+  count.className="rank-count";
+  count.textContent=item.count;
+
+  row.append(
+   position,
+   league,
+   country,
+   count
+  );
+
+  $("ranking").append(row);
+
+ });
+
+}
+
+/* TOUS LES JOUEURS */
+
+function renderAllPlayers(filtered){
+
+ $("allPlayersList").replaceChildren();
+
+ const list=[...filtered]
+  .sort((a,b)=>
+   a.joueur.localeCompare(b.joueur,"fr")
+  );
+
+ $("playersResult").textContent=
+  `${list.length} joueur${list.length>1?"s":""} affiché${list.length>1?"s":""}`;
+
+ if(!list.length){
+
+  $("allPlayersList").innerHTML=
+   '<p class="empty">Aucun joueur trouvé.</p>';
+
+  return;
+ }
+
+ list.forEach(j=>{
+  $("allPlayersList").append(
+   createPlayerCard(j)
+  );
+ });
+
+}
+
+/* STATISTIQUES */
+
+function countBy(array,keyFunction){
+
+ const map=new Map();
+
+ array.forEach(item=>{
+
+  const key=keyFunction(item);
+
+  if(!key) return;
+
+  map.set(
+   key,
+   (map.get(key)||0)+1
+  );
+
+ });
+
+ return [...map.entries()]
+  .sort((a,b)=>b[1]-a[1]);
+
+}
+
+function createBars(container,data){
+
+ container.replaceChildren();
+
+ if(!data.length) return;
+
+ const max=data[0][1];
+
+ data.forEach(([label,value])=>{
+
+  const row=document.createElement("div");
+  row.className="bar-row";
+
+  const labelRow=document.createElement("div");
+  labelRow.className="bar-label";
+
+  const name=document.createElement("span");
+  name.textContent=label;
+
+  const number=document.createElement("strong");
+  number.textContent=value;
+
+  labelRow.append(name,number);
+
+  const bg=document.createElement("div");
+  bg.className="bar-bg";
+
+  const bar=document.createElement("div");
+  bar.className="bar";
+  bar.style.width=
+   ((value/max)*100)+"%";
+
+  bg.append(bar);
+
+  row.append(labelRow,bg);
+
+  container.append(row);
+
+ });
+
+}
+
+function renderStatistics(filtered){
+
+ const countryData=
+  countBy(filtered,j=>j.pays);
+
+ const leagueData=
+  countBy(
+   filtered,
+   j=>j.pays+"|||"+j.championnat
+  );
+
+ const positionData=
+  countBy(
+   filtered,
+   j=>positionGroup(j.poste)
+  );
+
+ /* PAYS N°1 */
+
+ $("topCountry").replaceChildren();
+
+ if(countryData.length){
+
+  const [country,count]=countryData[0];
+
+  $("topCountry").innerHTML=
+   `<div class="highlight-icon">${getFlag(country)}</div>
+    <strong>${country}</strong>
+    <span>${count} joueur${count>1?"s":""} français</span>`;
+
+ }
+
+ /* CHAMPIONNAT N°1 */
+
+ $("topLeague").replaceChildren();
+
+ if(leagueData.length){
+
+  const [key,count]=leagueData[0];
+
+  const [country,league]=
+   key.split("|||");
+
+  $("topLeague").innerHTML=
+   `<div class="highlight-icon">${getFlag(country)}</div>
+    <strong>${league}</strong>
+    <span>${country} • ${count} joueur${count>1?"s":""}</span>`;
+
+ }
+
+ createBars(
+  $("positionStats"),
+  positionData
+ );
+
+ createBars(
+  $("countryStats"),
+  countryData.slice(0,10)
+ );
+
+}
+
+/* RENDER GENERAL */
+
+function render(){
+
+ updateStats();
+
+ const filtered=filteredPlayers();
+
+ if(selectedLeague){
+
+  renderLeague(filtered);
+  return;
+
+ }
+
+ if(currentView==="home"){
+  renderLeagues(filtered);
+ }
+
+ if(currentView==="ranking"){
+  renderRanking(filtered);
+ }
+
+ if(currentView==="players"){
+  renderAllPlayers(filtered);
+ }
+
+ if(currentView==="stats"){
+  renderStatistics(filtered);
+ }
 
 }
 
 /* MENU */
 
 $("navHome").onclick=()=>{
-
-  currentView="home";
-  selectedLeague=null;
-
-  render();
-
+ setView("home");
 };
 
 $("navLeagues").onclick=()=>{
+ setView("home");
+};
 
-  currentView="home";
-  selectedLeague=null;
-
-  render();
-
-  document
-    .getElementById("home")
-    .scrollIntoView({
-      behavior:"smooth"
-    });
-
+$("navRanking").onclick=()=>{
+ setView("ranking");
 };
 
 $("navPlayers").onclick=()=>{
+ setView("players");
+};
 
-  currentView="players";
-  selectedLeague=null;
-
-  render();
-
+$("navStats").onclick=()=>{
+ setView("stats");
 };
 
 /* FILTRES */
@@ -895,8 +1396,28 @@ $("search")
 $("country")
 .addEventListener("change",()=>{
 
-  selectedLeague=null;
-  render();
+ selectedLeague=null;
+
+ if(currentView==="home"){
+  $("details").hidden=true;
+  $("home").hidden=false;
+ }
+
+ render();
+
+});
+
+$("position")
+.addEventListener("change",()=>{
+
+ selectedLeague=null;
+
+ if(currentView==="home"){
+  $("details").hidden=true;
+  $("home").hidden=false;
+ }
+
+ render();
 
 });
 
@@ -904,83 +1425,87 @@ $("country")
 
 $("back").onclick=()=>{
 
-  selectedLeague=null;
-  currentView="home";
+ selectedLeague=null;
 
-  render();
+ $("details").hidden=true;
+ $("home").hidden=false;
+
+ currentView="home";
+
+ render();
 
 };
 
-/* CHARGEMENT API */
+/* API */
 
 async function load(){
 
-  try{
+ try{
 
-    const response=await fetch(API);
+  const response=await fetch(API);
 
-    if(!response.ok){
-      throw Error("Erreur réseau");
-    }
-
-    const data=await response.json();
-
-    if(!Array.isArray(data)){
-      throw Error("Données invalides");
-    }
-
-    joueurs=data
-      .map(j=>({
-
-        joueur:clean(j.joueur),
-        club:clean(j.club),
-        championnat:clean(j.championnat),
-        pays:clean(j.pays),
-        poste:clean(j.poste)
-
-      }))
-      .filter(j=>
-        j.joueur &&
-        j.championnat &&
-        j.pays
-      );
-
-    const countries=
-      [...new Set(
-        joueurs.map(j=>j.pays)
-      )]
-      .sort((a,b)=>
-        a.localeCompare(b,"fr")
-      );
-
-    countries.forEach(p=>{
-
-      const option=
-        document.createElement("option");
-
-      option.value=p;
-      option.textContent=
-        `${getFlag(p)} ${p}`;
-
-      $("country").append(option);
-
-    });
-
-    $("status").textContent=
-      joueurs.length
-      ? ""
-      : "Aucun joueur enregistré pour le moment.";
-
-    render();
-
-  }catch(error){
-
-    console.error(error);
-
-    $("status").textContent=
-      "Impossible de charger les joueurs. Vérifie la connexion avec Google Sheets.";
-
+  if(!response.ok){
+   throw Error("Erreur réseau");
   }
+
+  const data=await response.json();
+
+  if(!Array.isArray(data)){
+   throw Error("Données invalides");
+  }
+
+  joueurs=data
+   .map(j=>({
+
+    joueur:clean(j.joueur),
+    club:clean(j.club),
+    championnat:clean(j.championnat),
+    pays:clean(j.pays),
+    poste:clean(j.poste)
+
+   }))
+   .filter(j=>
+    j.joueur &&
+    j.championnat &&
+    j.pays
+   );
+
+  const countries=
+   [...new Set(
+    joueurs.map(j=>j.pays)
+   )]
+   .sort((a,b)=>
+    a.localeCompare(b,"fr")
+   );
+
+  countries.forEach(p=>{
+
+   const option=
+    document.createElement("option");
+
+   option.value=p;
+   option.textContent=
+    `${getFlag(p)} ${p}`;
+
+   $("country").append(option);
+
+  });
+
+  $("status").textContent=
+   joueurs.length
+   ? ""
+   : "Aucun joueur enregistré pour le moment.";
+
+  render();
+
+ }catch(error){
+
+  console.error(error);
+
+  $("status").textContent=
+   "Impossible de charger les joueurs. Vérifie la connexion avec Google Sheets.";
+
+ }
 
 }
 
