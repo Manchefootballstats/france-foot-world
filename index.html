@@ -7,7 +7,6 @@
 
 <style>
 *{box-sizing:border-box}
-
 html{scroll-behavior:smooth}
 
 body{
@@ -217,6 +216,30 @@ input:focus,select:focus{
 
 .league small{color:#64748b}
 
+/* DERNIERS JOUEURS */
+
+.latest-wrapper{
+ background:linear-gradient(135deg,#eff6ff,#ffffff);
+ border:1px solid #dbeafe;
+ border-radius:16px;
+ padding:5px 18px 22px;
+ margin-bottom:30px;
+}
+
+.latest-grid{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:12px;
+}
+
+.latest-date{
+ margin-top:10px;
+ padding-top:9px;
+ border-top:1px solid #e2e8f0;
+ font-size:12px;
+ color:#64748b;
+}
+
 /* CLASSEMENT */
 
 .ranking{
@@ -302,12 +325,15 @@ input:focus,select:focus{
  padding:12px;
 }
 
+/* JOUEURS */
+
 .player{
  background:white;
  padding:15px;
  border-radius:10px;
  border:1px solid #e2e8f0;
  border-left:4px solid #2563eb;
+ box-shadow:0 2px 7px rgba(15,23,42,.04);
 }
 
 .player-name{
@@ -425,7 +451,14 @@ input:focus,select:focus{
  margin-bottom:15px;
 }
 
-.back:hover{background:#123a82}
+.back:hover{
+ background:#123a82;
+}
+
+.latest-button{
+ text-align:center;
+ margin-top:18px;
+}
 
 .empty{
  text-align:center;
@@ -442,6 +475,12 @@ footer{
 }
 
 footer strong{color:white}
+
+@media(max-width:800px){
+ .latest-grid{
+  grid-template-columns:repeat(2,1fr);
+ }
+}
 
 @media(max-width:700px){
 
@@ -469,7 +508,6 @@ footer strong{color:white}
  }
 
  .stat strong{font-size:23px}
-
  .stat span{font-size:11px}
 
  .controls{
@@ -478,6 +516,10 @@ footer strong{color:white}
  }
 
  .leagues{
+  grid-template-columns:1fr;
+ }
+
+ .latest-grid{
   grid-template-columns:1fr;
  }
 
@@ -565,9 +607,29 @@ footer strong{color:white}
 
 </div>
 
-<!-- CHAMPIONNATS -->
+<!-- ACCUEIL -->
 
 <section id="home">
+
+ <div class="latest-wrapper">
+
+  <div class="section-title">
+   <h2>🆕 Derniers joueurs ajoutés</h2>
+  </div>
+
+  <p class="subtitle">
+   Les dernières arrivées dans la base France Foot World.
+  </p>
+
+  <div id="latestPlayers" class="latest-grid"></div>
+
+  <div class="latest-button">
+   <button class="back" id="showAllPlayers">
+    🇫🇷 Voir tous les joueurs
+   </button>
+  </div>
+
+ </div>
 
  <div class="section-title">
   <h2>🌍 Les championnats</h2>
@@ -734,7 +796,7 @@ function getFlag(country){
  return flags[country]||"🌍";
 }
 
-/* NORMALISATION DES POSTES */
+/* POSTES */
 
 function positionGroup(position){
 
@@ -774,6 +836,8 @@ function positionGroup(position){
  return position || "Non renseigné";
 }
 
+/* FILTRES */
+
 function filteredPlayers(){
 
  const q=$("search")
@@ -807,6 +871,8 @@ function filteredPlayers(){
  });
 
 }
+
+/* CARTE JOUEUR */
 
 function createPlayerCard(j){
 
@@ -848,6 +914,8 @@ function createPlayerCard(j){
  return card;
 }
 
+/* COMPTEURS */
+
 function updateStats(){
 
  $("totalPlayers").textContent=joueurs.length;
@@ -862,44 +930,91 @@ function updateStats(){
 
 }
 
-function setView(view){
+/* DATES */
 
- currentView=view;
- selectedLeague=null;
+function parseFrenchDate(value){
 
- $("home").hidden=true;
- $("details").hidden=true;
- $("rankingSection").hidden=true;
- $("allPlayers").hidden=true;
- $("statisticsSection").hidden=true;
+ const date=clean(value);
 
- document
-  .querySelectorAll(".nav-btn")
-  .forEach(btn=>btn.classList.remove("active"));
+ if(!date){
+  return 0;
+ }
 
- if(view==="home"){
+ /* FORMAT JJ/MM/AAAA */
 
-  $("home").hidden=false;
-  $("navHome").classList.add("active");
+ const french=
+  date.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
 
- }else if(view==="ranking"){
+ if(french){
 
-  $("rankingSection").hidden=false;
-  $("navRanking").classList.add("active");
+  const day=Number(french[1]);
+  const month=Number(french[2])-1;
+  const year=Number(french[3]);
 
- }else if(view==="players"){
-
-  $("allPlayers").hidden=false;
-  $("navPlayers").classList.add("active");
-
- }else if(view==="stats"){
-
-  $("statisticsSection").hidden=false;
-  $("navStats").classList.add("active");
+  return new Date(
+   year,
+   month,
+   day
+  ).getTime();
 
  }
 
- render();
+ /* AUTRES FORMATS EVENTUELS */
+
+ const timestamp=Date.parse(date);
+
+ return Number.isNaN(timestamp)
+  ?0
+  :timestamp;
+
+}
+
+/* DERNIERS JOUEURS */
+
+function renderLatestPlayers(){
+
+ const container=$("latestPlayers");
+
+ container.replaceChildren();
+
+ const latest=joueurs
+  .filter(j=>
+   j.dateAjout &&
+   parseFrenchDate(j.dateAjout)>0
+  )
+  .sort((a,b)=>
+   parseFrenchDate(b.dateAjout)-
+   parseFrenchDate(a.dateAjout)
+  )
+  .slice(0,6);
+
+ if(!latest.length){
+
+  const empty=document.createElement("p");
+  empty.className="empty";
+  empty.textContent=
+   "Aucun joueur récemment ajouté.";
+
+  container.append(empty);
+  return;
+
+ }
+
+ latest.forEach(j=>{
+
+  const card=createPlayerCard(j);
+
+  const date=document.createElement("div");
+  date.className="latest-date";
+  date.textContent=
+   "🆕 Ajouté le "+j.dateAjout;
+
+  card.append(date);
+
+  container.append(card);
+
+ });
+
 }
 
 /* CHAMPIONNATS */
@@ -931,14 +1046,20 @@ function renderLeagues(filtered){
 
  const sortedCountries=
   [...countries.keys()]
-  .sort((a,b)=>a.localeCompare(b,"fr"));
+  .sort((a,b)=>
+   a.localeCompare(b,"fr")
+  );
 
  if(!sortedCountries.length){
 
-  $("countries").innerHTML=
-   '<p class="empty">Aucun championnat trouvé.</p>';
+  const empty=document.createElement("p");
+  empty.className="empty";
+  empty.textContent=
+   "Aucun championnat trouvé.";
 
+  $("countries").append(empty);
   return;
+
  }
 
  sortedCountries.forEach(country=>{
@@ -990,6 +1111,9 @@ function renderLeagues(filtered){
     };
 
     $("home").hidden=true;
+    $("rankingSection").hidden=true;
+    $("allPlayers").hidden=true;
+    $("statisticsSection").hidden=true;
     $("details").hidden=false;
 
     renderLeague(filteredPlayers());
@@ -1011,9 +1135,13 @@ function renderLeagues(filtered){
 
 }
 
-/* REGROUPEMENT PAR CLUB */
+/* CHAMPIONNAT PAR CLUB */
 
 function renderLeague(filtered){
+
+ if(!selectedLeague){
+  return;
+ }
 
  const league=selectedLeague;
 
@@ -1032,10 +1160,13 @@ function renderLeague(filtered){
 
  if(!list.length){
 
-  $("clubGroups").innerHTML=
-   '<p class="empty">Aucun joueur trouvé.</p>';
+  const empty=document.createElement("p");
+  empty.className="empty";
+  empty.textContent="Aucun joueur trouvé.";
 
+  $("clubGroups").append(empty);
   return;
+
  }
 
  const clubs=new Map();
@@ -1108,11 +1239,13 @@ function renderRanking(filtered){
   const key=j.pays+"|"+j.championnat;
 
   if(!map.has(key)){
+
    map.set(key,{
     pays:j.pays,
     championnat:j.championnat,
     count:0
    });
+
   }
 
   map.get(key).count++;
@@ -1124,16 +1257,21 @@ function renderRanking(filtered){
   .sort((a,b)=>
    b.count-a.count ||
    a.championnat.localeCompare(
-    b.championnat,"fr"
+    b.championnat,
+    "fr"
    )
   );
 
  if(!ranking.length){
 
-  $("ranking").innerHTML=
-   '<p class="empty">Aucune donnée disponible.</p>';
+  const empty=document.createElement("p");
+  empty.className="empty";
+  empty.textContent=
+   "Aucune donnée disponible.";
 
+  $("ranking").append(empty);
   return;
+
  }
 
  ranking.forEach((item,index)=>{
@@ -1144,10 +1282,15 @@ function renderRanking(filtered){
   const position=document.createElement("div");
   position.className="rank-position";
 
-  if(index===0) position.textContent="🥇";
-  else if(index===1) position.textContent="🥈";
-  else if(index===2) position.textContent="🥉";
-  else position.textContent=index+1;
+  if(index===0){
+   position.textContent="🥇";
+  }else if(index===1){
+   position.textContent="🥈";
+  }else if(index===2){
+   position.textContent="🥉";
+  }else{
+   position.textContent=index+1;
+  }
 
   const league=document.createElement("div");
   league.className="rank-league";
@@ -1160,7 +1303,8 @@ function renderRanking(filtered){
 
   const count=document.createElement("div");
   count.className="rank-count";
-  count.textContent=item.count;
+  count.textContent=
+   `${item.count} 🇫🇷`;
 
   row.append(
    position,
@@ -1191,16 +1335,22 @@ function renderAllPlayers(filtered){
 
  if(!list.length){
 
-  $("allPlayersList").innerHTML=
-   '<p class="empty">Aucun joueur trouvé.</p>';
+  const empty=document.createElement("p");
+  empty.className="empty";
+  empty.textContent=
+   "Aucun joueur trouvé.";
 
+  $("allPlayersList").append(empty);
   return;
+
  }
 
  list.forEach(j=>{
+
   $("allPlayersList").append(
    createPlayerCard(j)
   );
+
  });
 
 }
@@ -1215,7 +1365,9 @@ function countBy(array,keyFunction){
 
   const key=keyFunction(item);
 
-  if(!key) return;
+  if(!key){
+   return;
+  }
 
   map.set(
    key,
@@ -1233,7 +1385,16 @@ function createBars(container,data){
 
  container.replaceChildren();
 
- if(!data.length) return;
+ if(!data.length){
+
+  const empty=document.createElement("p");
+  empty.className="empty";
+  empty.textContent="Aucune donnée.";
+
+  container.append(empty);
+  return;
+
+ }
 
  const max=data[0][1];
 
@@ -1258,6 +1419,7 @@ function createBars(container,data){
 
   const bar=document.createElement("div");
   bar.className="bar";
+
   bar.style.width=
    ((value/max)*100)+"%";
 
@@ -1288,22 +1450,30 @@ function renderStatistics(filtered){
    j=>positionGroup(j.poste)
   );
 
- /* PAYS N°1 */
-
  $("topCountry").replaceChildren();
 
  if(countryData.length){
 
   const [country,count]=countryData[0];
 
-  $("topCountry").innerHTML=
-   `<div class="highlight-icon">${getFlag(country)}</div>
-    <strong>${country}</strong>
-    <span>${count} joueur${count>1?"s":""} français</span>`;
+  const icon=document.createElement("div");
+  icon.className="highlight-icon";
+  icon.textContent=getFlag(country);
+
+  const name=document.createElement("strong");
+  name.textContent=country;
+
+  const text=document.createElement("span");
+  text.textContent=
+   `${count} joueur${count>1?"s":""} français`;
+
+  $("topCountry").append(icon,name,text);
+
+ }else{
+
+  $("topCountry").textContent="Aucune donnée.";
 
  }
-
- /* CHAMPIONNAT N°1 */
 
  $("topLeague").replaceChildren();
 
@@ -1314,10 +1484,22 @@ function renderStatistics(filtered){
   const [country,league]=
    key.split("|||");
 
-  $("topLeague").innerHTML=
-   `<div class="highlight-icon">${getFlag(country)}</div>
-    <strong>${league}</strong>
-    <span>${country} • ${count} joueur${count>1?"s":""}</span>`;
+  const icon=document.createElement("div");
+  icon.className="highlight-icon";
+  icon.textContent=getFlag(country);
+
+  const name=document.createElement("strong");
+  name.textContent=league;
+
+  const text=document.createElement("span");
+  text.textContent=
+   `${country} • ${count} joueur${count>1?"s":""}`;
+
+  $("topLeague").append(icon,name,text);
+
+ }else{
+
+  $("topLeague").textContent="Aucune donnée.";
 
  }
 
@@ -1330,6 +1512,51 @@ function renderStatistics(filtered){
   $("countryStats"),
   countryData.slice(0,10)
  );
+
+}
+
+/* AFFICHAGE */
+
+function showSection(view){
+
+ currentView=view;
+ selectedLeague=null;
+
+ $("home").hidden=true;
+ $("details").hidden=true;
+ $("rankingSection").hidden=true;
+ $("allPlayers").hidden=true;
+ $("statisticsSection").hidden=true;
+
+ document
+  .querySelectorAll(".nav-btn")
+  .forEach(btn=>
+   btn.classList.remove("active")
+  );
+
+ if(view==="home"){
+
+  $("home").hidden=false;
+  $("navHome").classList.add("active");
+
+ }else if(view==="ranking"){
+
+  $("rankingSection").hidden=false;
+  $("navRanking").classList.add("active");
+
+ }else if(view==="players"){
+
+  $("allPlayers").hidden=false;
+  $("navPlayers").classList.add("active");
+
+ }else if(view==="stats"){
+
+  $("statisticsSection").hidden=false;
+  $("navStats").classList.add("active");
+
+ }
+
+ render();
 
 }
 
@@ -1349,7 +1576,10 @@ function render(){
  }
 
  if(currentView==="home"){
+
+  renderLatestPlayers();
   renderLeagues(filtered);
+
  }
 
  if(currentView==="ranking"){
@@ -1369,29 +1599,65 @@ function render(){
 /* MENU */
 
 $("navHome").onclick=()=>{
- setView("home");
+ showSection("home");
 };
 
 $("navLeagues").onclick=()=>{
- setView("home");
+
+ showSection("home");
+
+ setTimeout(()=>{
+
+  $("countries").scrollIntoView({
+   behavior:"smooth",
+   block:"start"
+  });
+
+ },50);
+
 };
 
 $("navRanking").onclick=()=>{
- setView("ranking");
+ showSection("ranking");
 };
 
 $("navPlayers").onclick=()=>{
- setView("players");
+ showSection("players");
 };
 
 $("navStats").onclick=()=>{
- setView("stats");
+ showSection("stats");
+};
+
+/* VOIR TOUS LES JOUEURS */
+
+$("showAllPlayers").onclick=()=>{
+
+ showSection("players");
+
+ window.scrollTo({
+  top:0,
+  behavior:"smooth"
+ });
+
 };
 
 /* FILTRES */
 
 $("search")
-.addEventListener("input",render);
+.addEventListener("input",()=>{
+
+ if(selectedLeague){
+
+  renderLeague(filteredPlayers());
+
+ }else{
+
+  render();
+
+ }
+
+});
 
 $("country")
 .addEventListener("change",()=>{
@@ -1399,8 +1665,10 @@ $("country")
  selectedLeague=null;
 
  if(currentView==="home"){
+
   $("details").hidden=true;
   $("home").hidden=false;
+
  }
 
  render();
@@ -1413,8 +1681,10 @@ $("position")
  selectedLeague=null;
 
  if(currentView==="home"){
+
   $("details").hidden=true;
   $("home").hidden=false;
+
  }
 
  render();
@@ -1426,17 +1696,24 @@ $("position")
 $("back").onclick=()=>{
 
  selectedLeague=null;
+ currentView="home";
 
  $("details").hidden=true;
  $("home").hidden=false;
 
- currentView="home";
+ document
+  .querySelectorAll(".nav-btn")
+  .forEach(btn=>
+   btn.classList.remove("active")
+  );
+
+ $("navHome").classList.add("active");
 
  render();
 
 };
 
-/* API */
+/* API GOOGLE SHEETS */
 
 async function load(){
 
@@ -1461,7 +1738,8 @@ async function load(){
     club:clean(j.club),
     championnat:clean(j.championnat),
     pays:clean(j.pays),
-    poste:clean(j.poste)
+    poste:clean(j.poste),
+    dateAjout:clean(j.dateAjout)
 
    }))
    .filter(j=>
